@@ -3,11 +3,11 @@ version = 5
 
 
 cloudstream {
-    language = "en"
+    language = "fr"
     // All of these properties are optional, you can safely remove them
 
     description = "Watch crunchyroll through Kamyroll API, this extension will only display english dubbed/hardsubbed anime"
-    authors = listOf("Stormunblessed")
+    authors = listOf("lebawra")
 
     /**
      * Status int as the following:

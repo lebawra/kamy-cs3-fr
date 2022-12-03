@@ -6,7 +6,7 @@ import com.lagradost.cloudstream3.utils.ExtractorLink
 import com.lagradost.cloudstream3.utils.M3u8Helper.Companion.generateM3u8
 import com.lagradost.cloudstream3.utils.getQualityFromName
 
-class KamyrollENProvider: MainAPI() {
+class KamyrollFRProvider: MainAPI() {
     companion object {
         var latestHeader: Map<String, String> = emptyMap()
         var latestKrunchyHeader: Map<String, String> = emptyMap()
@@ -14,11 +14,11 @@ class KamyrollENProvider: MainAPI() {
         var latestcountryID = ""
         private const val krunchyapi = "https://beta-api.crunchyroll.com"
     }
-    override var name = "Kamyroll EN"
+    override var name = "Kamyroll FR"
     override var mainUrl = "https://api.kamyroll.tech" //apirurl
     override val instantLinkLoading = false
     override val hasMainPage = true
-    override var lang = "en"
+    override var lang = "fr"
     override val supportedTypes = setOf(
         TvType.AnimeMovie,
         TvType.Anime,
@@ -131,8 +131,8 @@ class KamyrollENProvider: MainAPI() {
     override suspend fun getMainPage(page: Int, request: MainPageRequest): HomePageResponse? {
         val items = ArrayList<HomePageList>()
         val urls = listOf(
-            Pair("$krunchyapi/content/v1/browse?locale=en-US&n=20&sort_by=popularity", "Trending"),
-            Pair("$krunchyapi/content/v1/browse?locale=en-US&n=20&sort_by=newly_added", "Newly Added")
+            Pair("$krunchyapi/content/v1/browse?locale=fr-FR&n=20&sort_by=popularity", "Trending"),
+            Pair("$krunchyapi/content/v1/browse?locale=fr-FR&n=20&sort_by=newly_added", "Newly Added")
         )
 
         urls.apmap {(url, name) ->
@@ -326,7 +326,7 @@ class KamyrollENProvider: MainAPI() {
         val fixID = url.replace("https://api.kamyroll.tech/","")
         getToken()
         getKrunchyToken()
-        val metadataUrl = "$krunchyapi/content/v2/cms/series/$fixID?&locale=en-US"
+        val metadataUrl = "$krunchyapi/content/v2/cms/series/$fixID?&locale=fr-FR"
         val metadainfo = app.get(metadataUrl, headers = latestKrunchyHeader).parsed<KrunchyLoadMain>()
         val title = metadainfo.data.first().title
         val tags = metadainfo.data.first().keywords
@@ -343,7 +343,7 @@ class KamyrollENProvider: MainAPI() {
             params = mapOf(
                 "channel_id" to "crunchyroll",
                 "id" to fixID,
-                "locale" to "en-US"
+                "locale" to "fr-FR"
             )
         ).parsed<KamySeasons>()
         val eps = ArrayList<Episode>()
@@ -370,7 +370,7 @@ class KamyrollENProvider: MainAPI() {
                 )
                 if (seasonTitle!!.contains(Regex("Piece: East Blue|Piece: Alabasta|Piece: Sky Island"))) {
                     //nothing to filter out non HD eps
-                } else if ((dubTitle!!.contains("English") && dub == true)) {
+                } else if ((dubTitle!!.contains("VF") && dub == true)) {
                     dubeps.add(ep)
                 } else if (!seasonTitle.contains(Regex("Dub"))) {
                     eps.add(ep)
@@ -445,8 +445,8 @@ class KamyrollENProvider: MainAPI() {
             val urlstream = it.url!!
             if ((it.audioLocale!!.contains(Regex("ja-JP|zh-CN")) && it.hardsubLocale.isNullOrEmpty()))
                 getKamyStream(urlstream, "Kamyroll RAW", callback)
-            if ((it.hardsubLocale!!.contains("en-US")|| it.audioLocale!!.contains("en-US"))) {
-                val name = if (it.audioLocale!!.contains("en-US")) "Kamyroll English (US)" else "Kamyroll Hardsub English (US)"
+            if ((it.hardsubLocale!!.contains("fr-FR")|| it.audioLocale!!.contains("fr-FR"))) {
+                val name = if (it.audioLocale!!.contains("fr-FR")) "Kamyroll French (FR)" else "Kamyroll Hardsub French (FR)"
                 getKamyStream(urlstream, name, callback)
             }
         }

@@ -1,6 +1,6 @@
 {
-  "name": "Stormunblessed Kamyroll Providers Repository",
-  "description": "Kamyroll Providers",
+  "name": "lebawra Repository",
+  "description": "Nothing to say",
   "manifestVersion": 1,
   "pluginLists": [
     "https://raw.githubusercontent.com/Stormunblessed/kamy-cs3/builds/plugins.json"
