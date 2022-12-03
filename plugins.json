@@ -1,0 +1,22 @@
+[
+    {
+        "iconUrl": "https://raw.githubusercontent.com/Stormunblessed/IPTV-CR-NIC/main/logos/K-14-11-2022.png",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/lebawra/kamy-cs3-fr",
+        "fileSize": 47512,
+        "status": 1,
+        "language": "fr",
+        "authors": [
+            "lebawra"
+        ],
+        "tvTypes": [
+            "Anime",
+            "OVA"
+        ],
+        "version": 5,
+        "internalName": "KamyrollFRProvider",
+        "description": "Watch crunchyroll through Kamyroll API, this extension will only display french dubbed/hardsubbed anime",
+        "url": "https://raw.githubusercontent.com/lebawra/kamy-cs3-fr/builds/KamyrollFRProvider.cs3",
+        "name": "KamyrollFRProvider"
+    }
+]
