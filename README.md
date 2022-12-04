@@ -1,3 +1,3 @@
 # `Kamyroll CS3 FR`
 repo link: https://raw.githubusercontent.com/lebawra/kamy-cs3-fr/main/repo.json
-(Created for my personal usage.)
+(Just for my personal usage.)
