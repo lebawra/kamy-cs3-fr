@@ -1,3 +1,4 @@
+// https://github.com/Stormunblessed/kamy-cs3
 package com.lagradost.cloudstream3.animeproviders
 
 import com.fasterxml.jackson.annotation.JsonProperty
